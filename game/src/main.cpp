@@ -105,7 +105,7 @@ int main(void)
                 case LOGO:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("LOGO SCREEN", 20, 20, 40, LIGHTGRAY);
+                    DrawText("made with", 20, 20, 40, LIGHTGRAY);
                     DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
 
                 } break;
