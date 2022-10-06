@@ -14,6 +14,9 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "screens.h"
+    
+
 
 //------------------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -31,6 +34,7 @@ int main(void)
     const int screenHeight = 450;
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
+    InitLogoScreen();
 
     GameScreen currentScreen = LOGO;
 
@@ -50,15 +54,9 @@ int main(void)
         {
             case LOGO:
             {
-                // TODO: Update LOGO screen variables here!
-
-                framesCounter++;    // Count frames
-
-                // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 120)
-                {
-                    currentScreen = TITLE;
-                }
+                UpdateLogoScreen();
+                
+                if (FinishLogoScreen()) currentScreen = TITLE;
             } break;
             case TITLE:
             {
@@ -104,10 +102,7 @@ int main(void)
             {
                 case LOGO:
                 {
-                    // TODO: Draw LOGO screen here!
-                    DrawText("made with", 20, 20, 40, LIGHTGRAY);
-                    DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
-
+                    DrawLogoScreen();
                 } break;
                 case TITLE:
                 {
