@@ -14,14 +14,14 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "screens.h"
-    
+#include "screen_logo.h"    
 
 
 //------------------------------------------------------------------------------------------
 // Types and Structures Definition
 //------------------------------------------------------------------------------------------
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+
+typedef enum GameScreen { LOGO = 0, TITLE, OPTIONS, GAMEPLAY, ENDING } GameScreen;
 
 //------------------------------------------------------------------------------------
 // Program main entry point
