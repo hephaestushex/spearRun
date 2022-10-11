@@ -48,9 +48,9 @@ int main(void)
 
     //Button initialization
 
-    Button playButton(screenWidth / 3, screenHeight / 2, 512, 256, GREEN);
-    Button optionsButton((screenWidth / 3) * 2, screenHeight - screenHeight / 4, 512, 256, GOLD);
-    Button exitButton(screenWidth - screenWidth / 3, screenHeight / 2, 512, 256, RED);
+    Button playButton((screenWidth / 4) - 64, screenHeight / 2, 128, 64, GREEN);
+    Button optionsButton((screenWidth / 2) - 64, screenHeight - screenHeight / 4, 128, 64, GOLD);
+    Button exitButton((screenWidth - screenWidth / 4) - 64, screenHeight / 2, 128, 64, RED);
 
 
 
