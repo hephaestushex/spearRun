@@ -2,7 +2,6 @@ raylib-master
 _build
 _bin
 .vs
-game/src/.vscode
 spearRun.sln
 Makefile
 .vscode
