@@ -39,7 +39,7 @@ int main(void)
 
     GameScreen currentScreen = LOGO;
 
-    Texture2D spearRunLogo = LoadTexture("../../resources/spearRun.png");
+    Texture2D spearRunLogo = LoadTexture("resources/spearRun.png");
 
     // TODO: Initialize all required variables and load all required data here!
 
@@ -48,9 +48,9 @@ int main(void)
 
     //Button initialization
 
-    Button playButton(screenWidth / 3, screenHeight / 2, 1024, 512, GREEN);
-    Button optionsButton((screenWidth / 3) * 2, screenHeight - screenHeight / 4, 1024, 512, GOLD);
-    Button exitButton(screenWidth - screenWidth / 3, screenHeight / 2, 1024, 512, RED);
+    Button playButton(screenWidth / 3, screenHeight / 2, 512, 256, GREEN);
+    Button optionsButton((screenWidth / 3) * 2, screenHeight - screenHeight / 4, 512, 256, GOLD);
+    Button exitButton(screenWidth - screenWidth / 3, screenHeight / 2, 512, 256, RED);
 
 
 
@@ -74,13 +74,9 @@ int main(void)
             {
                 // TODO: Update TITLE screen variables here!
                 
-      
+                if (playButton.isClicked()) currentScreen = GAMEPLAY;
 
-                // Press enter to change to GAMEPLAY screen
-                if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
-                {
-                    currentScreen = GAMEPLAY;
-                }
+                if (exitButton.isClicked()) exitGame = true;
             } break;
             case GAMEPLAY:
             {
@@ -123,7 +119,7 @@ int main(void)
                     // TODO: Draw TITLE screen here!
                     DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
                     DrawTexture(spearRunLogo, -50, 25, WHITE);
-                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, BLACK);
+                    playButton.draw(); exitButton.draw(); optionsButton.draw();
 
                 } break;
                 case GAMEPLAY:

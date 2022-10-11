@@ -20,11 +20,11 @@ class Button
 			return Rectangle{ x, y, width, height };
 		}
 
-		bool isClicked(float mouseX, float mouseY)
+		bool isClicked() // Custom button click function, involving mouse's location and click
 		{
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
-				if (GetMouseX() > x && GetMouseX() < x + width && GetMouseY() > y && GetMouseY < y + height)
+				if (GetMouseX() > x && GetMouseX() < x + width && GetMouseY() > y && GetMouseY() < y + height)
 				{
 					return true;
 				}
