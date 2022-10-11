@@ -5,3 +5,4 @@ _bin
 game/src/.vscode
 spearRun.sln
 Makefile
+.vscode
