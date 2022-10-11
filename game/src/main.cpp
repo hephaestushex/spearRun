@@ -14,7 +14,8 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include "screen_logo.h"    
+#include "screen_logo.h"  
+#include "button.hpp"
 
 
 //------------------------------------------------------------------------------------------
@@ -33,14 +34,25 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
+    InitWindow(screenWidth, screenHeight, "spearRun!");
     InitLogoScreen();
 
     GameScreen currentScreen = LOGO;
 
+    Texture2D spearRunLogo = LoadTexture("../../resources/spearRun.png");
+
     // TODO: Initialize all required variables and load all required data here!
 
-    int framesCounter = 0;          // Useful to count frames
+    int framesCounter = 0;  // Useful to count frames
+    bool exitGame = false; //Exit Mechanics
+
+    //Button initialization
+
+    Button playButton(screenWidth / 3, screenHeight / 2, 1024, 512, GREEN);
+    Button optionsButton((screenWidth / 3) * 2, screenHeight - screenHeight / 4, 1024, 512, GOLD);
+    Button exitButton(screenWidth - screenWidth / 3, screenHeight / 2, 1024, 512, RED);
+
+
 
     SetTargetFPS(60);               // Set desired framerate (frames-per-second)
     //--------------------------------------------------------------------------------------
@@ -61,6 +73,8 @@ int main(void)
             case TITLE:
             {
                 // TODO: Update TITLE screen variables here!
+                
+      
 
                 // Press enter to change to GAMEPLAY screen
                 if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
@@ -107,9 +121,9 @@ int main(void)
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!
-                    DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
-                    DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
-                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
+                    DrawTexture(spearRunLogo, -50, 25, WHITE);
+                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, BLACK);
 
                 } break;
                 case GAMEPLAY:
@@ -132,6 +146,12 @@ int main(void)
             }
 
         EndDrawing();
+
+        if (exitGame)
+        {
+            break;
+        }
+
         //----------------------------------------------------------------------------------
     }
 
@@ -139,6 +159,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
 
     // TODO: Unload all loaded data (textures, fonts, audio) here!
+    UnloadTexture(spearRunLogo);
 
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
